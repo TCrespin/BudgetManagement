@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BudgetManagement.Views.DepensePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:BudgetManagement.ViewModels"
+    Title="Depense"
+    BackgroundColor="#022963"
+    Shell.TabBarIsVisible="False">
+
+    <Shell.TitleView>
+        <Label
+            FontAttributes="Bold"
+            FontSize="22"
+            Text="Depense"
+            TextColor="White"
+            VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="True" IsVisible="True" />
+    </Shell.BackButtonBehavior>
+    <Grid Padding="10">
+        <VerticalStackLayout Margin="10" Spacing="10">
+            <!--  Champ pour le motif de la dépense  -->
+            <Frame
+                Padding="3"
+                BackgroundColor="#022963"
+                BorderColor="#022963">
+                <VerticalStackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Times New Roman"
+                        FontSize="20"
+                        Text="Quel est votre dépense ?"
+                        TextColor="#2A96FA" />
+                    <Entry
+                        FontFamily="Arial"
+                        FontSize="18"
+                        Placeholder="Entrez le motif de la dépense"
+                        PlaceholderColor="Grey"
+                        Text="{Binding Name}"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+            <!--  Champ pour le montant  -->
+            <Frame
+                Padding="3"
+                BackgroundColor="#022963"
+                BorderColor="#022963">
+                <VerticalStackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Times New Roman"
+                        FontSize="20"
+                        Text="Montant"
+                        TextColor="#2A96FA" />
+                    <Entry
+                        x:Name="MontantEntry"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        Keyboard="Numeric"
+                        Placeholder="Entrez le montant"
+                        PlaceholderColor="Grey"
+                        Text="{Binding Montant}"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+            <!--  Champ pour la catégorie (Transformé en Picker)  -->
+            <Frame
+                Padding="5"
+                BackgroundColor="#022963"
+                BorderColor="#022963">
+                <VerticalStackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Times New Roman"
+                        FontSize="20"
+                        Text="Catégorie"
+                        TextColor="#2A96FA" />
+                    <Picker
+                        Title="Sélectionnez une catégorie"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        SelectedIndex="{Binding IdCategorie}"
+                        TextColor="White"
+                        TitleColor="Gray">
+                        <Picker.Items />
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+            <!--  Champ pour la date  -->
+            <Frame
+                Padding="5"
+                BackgroundColor="#022963"
+                BorderColor="#022963">
+                <VerticalStackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Times New Roman"
+                        FontSize="20"
+                        Text="Date"
+                        TextColor="#2A96FA" />
+                    <DatePicker
+                        Date="{Binding Date}"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        Format="dd/MM/yyyy"
+                        TextColor="Grey" />
+                </VerticalStackLayout>
+            </Frame>
+            <!--  Champ pour l'heure  -->
+            <Frame
+                Padding="5"
+                BackgroundColor="#022963"
+                BorderColor="#022963">
+                <VerticalStackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Times New Roman"
+                        FontSize="20"
+                        Text="Heure"
+                        TextColor="#2A96FA" />
+                    <TimePicker
+                        FontFamily="Arial"
+                        FontSize="15"
+                        Format="t"
+                        TextColor="Grey"
+                        Time="{Binding Time}" />
+                </VerticalStackLayout>
+            </Frame>
+            <!--  Champ pour les détails (Facultatifs)  -->
+            <Frame
+                Padding="5"
+                BackgroundColor="#022963"
+                BorderColor="#022963">
+                <VerticalStackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Times New Roman"
+                        FontSize="20"
+                        Text="Détails (Facultatifs)"
+                        TextColor="#2A96FA" />
+                    <Entry
+                        FontFamily="Arial"
+                        FontSize="15"
+                        Placeholder="Plus de détails"
+                        PlaceholderColor="Grey"
+                        Text="{Binding Description}"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+            <!--  Champ pour le degré d'importance  -->
+            <Frame
+                Padding="5"
+                BackgroundColor="#022963"
+                BorderColor="#022963">
+                <VerticalStackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Times New Roman"
+                        FontSize="20"
+                        Text="Degré d'importance"
+                        TextColor="#2A96FA" />
+                    <Picker
+                        Title="Sélectionnez une catégorie"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        SelectedIndex="{Binding DegreImportance}"
+                        TextColor="White"
+                        TitleColor="Gray">
+                        <Picker.Items>
+                            <x:String>0%</x:String>
+                            <x:String>25%</x:String>
+                            <x:String>50%</x:String>
+                            <x:String>75%</x:String>
+                            <x:String>100%</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+            <!--  Boutons de validation et d'annulation placés côte à côte  -->
+            <HorizontalStackLayout HorizontalOptions="Fill" Spacing="10">
+                <Button
+                    Padding="2"
+                    BackgroundColor="#2A96FA"
+                    Command="{Binding DeleteDepense}"
+                    Text="Supprimer"
+                    TextColor="White"
+                    WidthRequest="170" />
+                <Button
+                    Padding="2"
+                    BackgroundColor="#2A96FA"
+                    Command="{Binding SaveDepense}"
+                    Text="Valider"
+                    TextColor="White"
+                    WidthRequest="170" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BudgetManagement.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Views="clr-namespace:BudgetManagement.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="BudgetManagement"
+    BackgroundColor="Blue">
+
+    <Shell.TitleView>
+        <Grid RowDefinitions="Auto, Auto">
+            <Label Text="B U D G E T"
+                   FontSize="22"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                />
+            <Label Text="MANAGEMENT"
+                   FontSize="16"
+                   Grid.Row="1"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                />
+        </Grid>
+    </Shell.TitleView>
+    
+    <TabBar>
+        <ShellContent
+            Title="Accueil"
+            Icon="home.svg"
+            ContentTemplate="{DataTemplate Views:Home}"
+            Route="Home"
+        />
+        <Tab
+            Title="Transaction"
+            Icon="flip_vertical.svg"
+            >
+            <ShellContent
+                Title="Dépense        "
+                ContentTemplate="{DataTemplate Views:TDepensePage}"
+                Route="TDepensePage"
+                />
+            <ShellContent
+                Title="Revenu         "
+                ContentTemplate="{DataTemplate Views:TRevenuPage}"
+                Route="TRevenuPage"
+                />
+            <ShellContent
+                Title="Epargne        "
+                ContentTemplate="{DataTemplate Views:TEpargnePage}"
+                Route="TEpargnePage"
+                />
+        </Tab>
+        <ShellContent
+            Title="Compte"
+            Icon="setting.svg"
+            ContentTemplate="{DataTemplate Views:ComptePage}"
+            Route="ComptePage"
+        />
+    </TabBar>
+</Shell>

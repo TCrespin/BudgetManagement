@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:BudgetManagement.ViewModels"
+             xmlns:views="clr-namespace:BudgetManagement.Views"
+             x:Class="BudgetManagement.Views.Home"
+             BackgroundColor="LightGray">
+
+    <!--Content-->
+    <Grid RowDefinitions="Auto, 80, *">
+        <Frame BackgroundColor="White"
+                   Padding="10"
+                   HeightRequest="193"
+                   Margin="20"
+                   Grid.Row="0"
+                   >
+            <Grid RowDefinitions="Auto, Auto, 20, Auto, Auto" ColumnDefinitions="Auto, Auto, *">
+                <Label
+                        Text="60.20 Euro"
+                        Grid.ColumnSpan="2"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        TextColor="Gray"
+                        FontSize="20"
+                        Padding="5"
+                        />
+                <Label
+                        Text="Total Balance"
+                        Grid.Row="1" Grid.ColumnSpan="2"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Margin="0, 0, 20, 0"
+                        Padding="5"
+                        />
+                <Label
+                        Text="Dépense: "
+                        Grid.Row="3"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="18"
+                        TextColor="Red"
+                        FontAttributes="Bold"
+                        Padding="5"
+                        />
+
+                <Label
+                        Text="423.22 Euro"
+                        Grid.Row="3" Grid.Column="1"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontSize="18"
+                        TextColor="Violet"
+                        FontAttributes="Bold"/>
+                <Label
+                        Text="Revenu: "
+                        Grid.Row="4"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontSize="18"
+                        TextColor="Green"
+                        FontAttributes="Bold"
+                        Padding="5"
+                        />
+                <Label
+                        Text="577,45 Euro"
+                        Grid.Row="4" Grid.Column="1"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="18"
+                        TextColor="Violet"
+                        FontAttributes="Bold"
+                        />
+                <Frame
+                        Grid.Column="3"
+                        Grid.RowSpan="5"
+                        BorderColor="white"
+                        >
+                </Frame>
+            </Grid>
+        </Frame>
+        <Frame
+                Grid.Row="1"
+                Margin="20, 0, 20, 0"
+                BackgroundColor="Blue"
+                HeightRequest="65"
+                Padding="10"
+                >
+            <Grid RowDefinitions="Auto,10">
+                <Label
+                        Text="Transactions récentes"
+                        Grid.Row="0"
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        TextColor="White"
+                        />
+                <Label
+                        Grid.Row="1"
+                        BackgroundColor="Black"
+                        HeightRequest="5"
+                        Margin="0, 5, 0, 0"
+                        />
+            </Grid>
+        </Frame>
+        <CollectionView
+                BindingContext=""
+                Margin="20"
+                SelectionMode="Single"
+                >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                            RowDefinitions="Auto, Auto, Auto, Auto"
+                            >
+                        <Label
+                                Text="{Binding Name, StringFormat='Epargne.{0}'}"
+                                FontSize="18"
+                                Grid.Row="0"
+                                />
+                        <ProgressBar
+                                Grid.Row="1"
+                                />
+                        <Label
+                                Text="{Binding Balance, StringFormat='Balance {0}'}"
+                                FontSize="18"
+                                Grid.Row="2"
+                                />
+                        <Label
+                                Text="{Binding Montant, StringFormat='Montant {0}'}"
+                                FontSize="18"
+                                Grid.Row="2"
+                                />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

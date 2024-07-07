@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetManagement.Views.ComptePage"
+             Title="ComptePage">
+
+    <Grid RowDefinitions="auto, auto" RowSpacing="20" Padding="20">
+        <Frame>
+            <Grid RowDefinitions="Auto,Auto" >
+                <Image Source="dotnet_bot.png" WidthRequest="300" HeightRequest="80" HorizontalOptions="Center" />
+                <Label Text="{Binding Text}" HorizontalOptions="Center" Grid.Row="1" FontSize="20" FontAttributes="Bold"
+                       BindingContext="{x:Reference pseudo}"/>
+            </Grid>
+        </Frame>
+        <Grid Grid.Row="1" RowSpacing="10" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+            <Frame Padding="10">
+                <Grid ColumnDefinitions="Auto,*,50">
+                    <Label Text="E-mail:" Margin="0,10,0,0" FontAttributes="Bold" FontSize="18"/>
+                    <Entry Placeholder="budget@gmail.com" PlaceholderColor="Gray" IsReadOnly="True" Grid.Column="1" FontAttributes="Bold" FontSize="18"/>
+                    <Button Text="" ImageSource="modifier.png" BackgroundColor="White" Grid.Column="2"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" Padding="10">
+                <Grid ColumnDefinitions="Auto,*,50">
+                    <Label Text="Pseudo:" Margin="0,10,0,0" FontAttributes="Bold" FontSize="18"/>
+                    <Entry Text="Thomas Dotnet" Placeholder="Thomas Dotnet" PlaceholderColor="Gray" IsReadOnly="False" Grid.Column="1" x:Name="pseudo" FontAttributes="Bold" FontSize="18"/>
+                    <Button ImageSource="modifier.png" BackgroundColor="White" Grid.Column="2"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="2" Padding="10">
+                <Grid ColumnDefinitions="Auto,*,50">
+                    <Label Text="Salaire:" Margin="0,10,0,0" FontAttributes="Bold" FontSize="18"/>
+                    <Entry Placeholder="" PlaceholderColor="Gray" IsReadOnly="True" Keyboard="Numeric" Grid.Column="1" FontAttributes="Bold" FontSize="18"/>
+                    <Button ImageSource="modifier.png" BackgroundColor="White" Grid.Column="2"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="3" Padding="10">
+                <Grid ColumnDefinitions="Auto,*,50">
+                    <Label Text="Epargne:" Margin="0,10,0,0" FontAttributes="Bold" FontSize="18"/>
+                    <Entry PlaceholderColor="Gray" IsReadOnly="True" Keyboard="Numeric" Grid.Column="1" FontAttributes="Bold" FontSize="18"/>
+                    <Button ImageSource="modifier.png" BackgroundColor="White" Grid.Column="2"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="4" Padding="10">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Label Text="Devise:" Margin="0,10,0,0" FontAttributes="Bold" FontSize="18"/>
+                    <Picker Title="Sélectionnez une devise" FontFamily="Arial" FontSize="18" TitleColor="Gray" SelectedItem="2" Grid.Column="1">
+                        <Picker.Items>
+                            <x:String>Euro EUR</x:String>
+                            <x:String>United States Dollar USD</x:String>
+                            <x:String>Central African CFA FranC XAF</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Grid>
+            </Frame>
+            <Button Text="Change Password" BackgroundColor="Gray" Grid.Row="5" FontSize="18"/>
+        </Grid>
+    </Grid>
+</ContentPage>

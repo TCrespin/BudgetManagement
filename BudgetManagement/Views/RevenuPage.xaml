@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetManagement.Views.RevenuPage"
+             Title="Revenu"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="#022963">
+
+    <Shell.TitleView>
+        <Label Text="Revenu"
+           TextColor="White"
+           FontSize="22"
+           VerticalTextAlignment="Center"
+           FontAttributes="Bold"
+        />
+    </Shell.TitleView>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="True" IsEnabled="True"/>
+    </Shell.BackButtonBehavior>
+    <Grid Padding="10">
+        <VerticalStackLayout Spacing="40" Margin="10">
+            <!-- Champ pour la source de revenu -->
+            <Frame BorderColor="#022963" BackgroundColor="#022963" Padding="5">
+                <Grid>
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Revenu" TextColor="#2A96FA" FontSize="20" FontAttributes="Bold"/>
+                        <Entry Placeholder="Source de revenu" TextColor="White" PlaceholderColor="Grey" FontSize="18" FontFamily="Arial Black" 
+                               Text="{Binding Name}"/>
+                    </VerticalStackLayout>
+                    <Image Source="chevron-down.png" Grid.Column="1" WidthRequest="24" HeightRequest="24" VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <!-- Champ pour le montant -->
+            <Frame BorderColor="#022963"   BackgroundColor="#022963" Padding="5">
+                <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Montant" TextColor="#2A96FA" FontSize="20" FontAttributes="Bold" />
+                        <Entry Placeholder="Entrez le montant" TextColor="White" PlaceholderColor="Grey" FontSize="18" FontFamily="Arial Black" Keyboard="Numeric" 
+                               Text="{Binding Montant}"/>
+                    </VerticalStackLayout>
+                    <Image Source="money-icon.png" Grid.Column="1" WidthRequest="24" HeightRequest="24" VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <!-- Champ pour la date -->
+            <Frame BorderColor="#022963"   BackgroundColor="#022963" Padding="5">
+                <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Date"  TextColor="#2A96FA" FontSize="20" FontAttributes="Bold" />
+                        <DatePicker Format="dd/MM/yyyy"  TextColor="White"  FontSize="18" FontFamily="Arial Black"
+                                    Date="{Binding Date}"/>
+                    </VerticalStackLayout>
+                    <Image Source="calendar-icon.png" Grid.Column="1" WidthRequest="24" HeightRequest="24" VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <!-- Champ pour l'heure -->
+            <Frame BorderColor="#022963"   BackgroundColor="#022963" Padding="5">
+                <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Heure"  TextColor="#2A96FA" FontSize="20" FontAttributes="Bold" />
+                        <TimePicker Format="t"  TextColor="White"  FontSize="18" FontFamily="Arial Black"
+                                    Time="{Binding Time}"/>
+                    </VerticalStackLayout>
+                    <Image Source="clock-icon.png" Grid.Column="1" WidthRequest="24" HeightRequest="24" VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <!-- Champ pour les détails (Facultatifs) -->
+            <Frame BorderColor="#022963"   BackgroundColor="#022963" Padding="5">
+                <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Détails (Facultatifs)" TextColor="#2A96FA" FontSize="20" FontAttributes="Bold" />
+                        <Editor Placeholder="Plus de détails" TextColor="White" PlaceholderColor="Grey" FontSize="18" FontFamily="Arial Black" 
+                                Text="{Binding Description}"/>
+                    </VerticalStackLayout>
+                    <Image Source="mic-icon.png" Grid.Column="1" WidthRequest="24" HeightRequest="24" VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <HorizontalStackLayout HorizontalOptions="Fill" Spacing="10">
+                <Button Text="Supprimer" 
+                    BackgroundColor="#2A96FA"  
+                    TextColor="White"
+                    WidthRequest="170"
+                    Padding="2"
+                    Command="{Binding DeleteRevenu}"/>
+                <Button Text="Valider"
+                    BackgroundColor="#2A96FA" 
+                    TextColor="White"
+                    WidthRequest="170"
+                    Padding="2"
+                    Command="{Binding SaveRevenu}"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

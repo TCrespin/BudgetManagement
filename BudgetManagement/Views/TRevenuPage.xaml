@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BudgetManagement.Views.TRevenuPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:BudgetManagement.ViewModels"
+    Title="Revenus">
+
+
+    <Grid ColumnDefinitions="*,50" RowDefinitions="*,50">
+        <CollectionView
+            x:Name="DepenseCollection"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            Margin="20"
+            ItemsSource="{Binding AllRevenus}"
+            SelectionMode="Single">
+
+            <!--  Designate how the collection of items are laid out  -->
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+
+            <!--  Define the appearance of each item in the list  -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Frame
+                            Margin="0,0,0,0"
+                            Padding="5,5,5,5"
+                            BackgroundColor="LightGray"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:TRevenuViewModel}}, Path=SelectRevenuCommand}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                            <Grid
+                                ColumnDefinitions="40,180, 80"
+                                ColumnSpacing="10"
+                                RowDefinitions="25, 25">
+                                <Frame
+                                    Grid.RowSpan="2"
+                                    Margin="0"
+                                    Padding="0"
+                                    CornerRadius="20"
+                                    HeightRequest="40">
+                                    <Image HeightRequest="30" Source="order.svg" />
+                                </Frame>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding Name, StringFormat='{0}'}"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding Datetime}"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="3"
+                                    BackgroundColor="LightGreen"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Montant, StringFormat='{0} fcfa'}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="-50,-20,50,20"
+            BackgroundColor="Blue"
+            Command="{Binding NewRevenu}"
+            CornerRadius="30"
+            ImageSource="check_solid.svg"
+            TextColor="White" />
+    </Grid>
+</ContentPage>
